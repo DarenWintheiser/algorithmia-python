@@ -27,7 +27,7 @@ deploy:
     - pip install wheel twine setuptools
     - python setup.py sdist bdist_wheel
     - python3 setup.py sdist bdist_wheel --universal
-    - twine upload -r pypi dist/*
+    - twine upload -r pypi dist/ 
 
 test:
   stage: test
@@ -38,7 +38,7 @@ test:pylint:36:
   image: python:3.6
   script:
     - pip install pylint --quiet
-    - pylint --ignored-classes=_socketobject *.py || echo $?
+    - pylint --ignored-classes=_socketobject  .py || echo $?
 
 test:pytest:36:
   image: python:3.6
@@ -78,3 +78,4 @@ python39:
     - pip install -r requirements.txt --quiet
     - pip install pytest --quiet
     - pytest
+ 
